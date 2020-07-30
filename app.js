@@ -53,7 +53,7 @@ const buildCard = () => {
     
     for (let i = 0; i < studentNames.length; i++){
         domString += `<div class="card m-3" style="width: 30%;">
-                        <div class="card-body">
+                        <div class="card-body ${studentNames[i].house}">
                             <h5 class="card-title">${studentNames[i].name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${studentNames[i].house}</h6>
                             <button id="${i}" type="button" class="btn btn-danger">Expel</button>
@@ -62,6 +62,7 @@ const buildCard = () => {
     }
     printToDom('#cards', domString);
     expelButtonClick();
+    cardColors();
 }
 
 const expelStudent = (e) => {
@@ -71,6 +72,20 @@ const expelStudent = (e) => {
     if (ctype === 'button'){
         studentNames.splice(target, 1);
         buildCard();
+    }
+}
+
+const cardColors = () => {
+    for (let i = 0; i < studentNames.length; i++){
+        if (studentNames[i].house === 'Gryffindor'){
+            document.querySelector('.Gryffindor').classList.add("Gryffindor");
+        } else if (studentNames[i].house === 'Slytherin') {
+            document.querySelector('.Slytherin').classList.add("Slytherin");
+        } else if (studentNames[i].house === 'Hufflepuff'){
+            document.querySelector('.Hufflepuff').classList.add("Hufflepuff");
+        } else if (studentNames[i].house === 'Ravenclaw'){
+            document.querySelector('.Ravenclaw').classList.add("Ravenclaw");
+        }
     }
 }
 
