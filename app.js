@@ -15,7 +15,7 @@ const buildForm = () => {
                         <div class="form-row align-items-center">
                             <div class="col-auto">
                                 <label class="sr-only" for="inlineFormInput">Name</label>
-                                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Student Name">
+                                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Student Name" required>
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary mb-2" id="sort-button">Sort!</button>
@@ -31,29 +31,48 @@ const sortButtonClick = () => {
     document.querySelector('#sort-button').addEventListener('click', buildCard);
 }
 
+const expelButtonClick = () => {
+    document.querySelector('#cards').addEventListener('click', expelStudent);
+}
+
 let studentNames = [];
 
 const getName = () => {
     const name = document.querySelector('#inlineFormInput').value;
-    return studentNames.push(name);
+    studentNames.push({name: name, house: getHouse()});
+}
+
+const getHouse = () => {
+    const houseNames = ['Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw'];
+    let randomHouse = houseNames[Math.floor(Math.random() * houseNames.length)];
+    return randomHouse;
 }
 
 const buildCard = () => {
     let domString = '';
-    const houseNames = ['Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw'];
-
+    
     for (let i = 0; i < studentNames.length; i++){
-        let randomHouse = houseNames[Math.floor(Math.random() * houseNames.length)]
-        domString += `<div class="card" style="width: 18rem;">
+        domString += `<div class="card m-3" style="width: 30%;">
                         <div class="card-body">
-                            <h5 class="card-title">${studentNames[i]}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${randomHouse}</h6>
+                            <h5 class="card-title">${studentNames[i].name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${studentNames[i].house}</h6>
+                            <button id="${i}" type="button" class="btn btn-danger">Expel</button>
                         </div>
                     </div>`
     }
     printToDom('#cards', domString);
+    expelButtonClick();
 }
 
+const expelStudent = (e) => {
+    const ctype = e.target.type;
+    const target = e.target.id;
+
+    if (ctype === 'button'){
+        studentNames.splice(target, 1);
+        buildCard();
+    }
+}
 
 const init = () => {
     initialButtonClick();
