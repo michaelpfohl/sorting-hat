@@ -40,11 +40,14 @@ const getName = () => {
 
 const buildCard = () => {
     let domString = '';
+    const houseNames = ['Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw'];
+
     for (let i = 0; i < studentNames.length; i++){
+        let randomHouse = houseNames[Math.floor(Math.random() * houseNames.length)]
         domString += `<div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">${studentNames[i]}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">${randomHouse}</h6>
                         </div>
                     </div>`
     }
