@@ -1,7 +1,7 @@
 'use strict';
 
 const initialButtonClick = () => {
-    document.querySelector('#sort-button').addEventListener('click', buildForm);
+    document.querySelector('#initial-button').addEventListener('click', buildForm);
 }
 
 const printToDom = (divId, textToPrint) => {
@@ -18,11 +18,23 @@ const buildForm = () => {
                                 <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Student Name">
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary mb-2">Sort!</button>
+                                <button type="submit" class="btn btn-primary mb-2" id="sort-button">Sort!</button>
                             </div>
                         </div>
                     </form>`
     printToDom('#form', domString);
+    sortButtonClick();
+}
+
+const sortButtonClick = () => {
+    document.querySelector('#sort-button').addEventListener('click', getName);
+}
+
+let studentNames = [];
+
+const getName = () => {
+    const name = document.querySelector('#inlineFormInput').value;
+    return studentNames.push(name);
 }
 
 const init = () => {
