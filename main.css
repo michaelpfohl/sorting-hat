@@ -1,3 +1,19 @@
 body {
     background: lavender;
 }
+
+.Gryffindor {
+    background: pink;
+}
+
+.Slytherin {
+    background: lightgreen;
+}
+
+.Hufflepuff {
+    background: lightyellow;
+}
+
+.Ravenclaw {
+    background: lightblue;
+}
