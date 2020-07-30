@@ -28,6 +28,7 @@ const buildForm = () => {
 
 const sortButtonClick = () => {
     document.querySelector('#sort-button').addEventListener('click', getName);
+    document.querySelector('#sort-button').addEventListener('click', buildCard);
 }
 
 let studentNames = [];
@@ -36,6 +37,20 @@ const getName = () => {
     const name = document.querySelector('#inlineFormInput').value;
     return studentNames.push(name);
 }
+
+const buildCard = () => {
+    let domString = '';
+    for (let i = 0; i < studentNames.length; i++){
+        domString += `<div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">${studentNames[i]}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        </div>
+                    </div>`
+    }
+    printToDom('#cards', domString);
+}
+
 
 const init = () => {
     initialButtonClick();
