@@ -10,7 +10,7 @@ const printToDom = (divId, textToPrint) => {
 }
 
 const buildForm = () => {
-    let domString = `<form>
+    let domString = `<form id="student-form">
                         <h1>Enter First Year's Name:</h1>
                         <div class="form-row align-items-center">
                             <div class="col-auto">
@@ -27,6 +27,7 @@ const buildForm = () => {
 }
 
 const sortButtonClick = () => {
+    document.querySelector('#student-form').addEventListener('click', resetForm);
     document.querySelector('#sort-button').addEventListener('click', getName);
     document.querySelector('#sort-button').addEventListener('click', buildCard);
 }
@@ -65,6 +66,10 @@ const buildCard = () => {
     printToDom('#cards', domString);
     expelButtonClick();
     cardColors();
+}
+
+const resetForm = () => {
+    document.querySelector('#student-form').reset();
 }
 
 const expelStudent = (e) => {
