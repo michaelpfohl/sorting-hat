@@ -52,13 +52,15 @@ const buildCard = () => {
     let domString = '';
     
     for (let i = 0; i < studentNames.length; i++){
-        domString += `<div class="card m-3" style="width: 30%;">
+        if (studentNames[i].name) {
+            domString += `<div class="card m-3" style="width: 30%;">
                         <div class="card-body ${studentNames[i].house}">
                             <h5 class="card-title">${studentNames[i].name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${studentNames[i].house}</h6>
                             <button id="${i}" type="button" class="btn btn-danger">Expel</button>
                         </div>
                     </div>`
+        }
     }
     printToDom('#cards', domString);
     expelButtonClick();
