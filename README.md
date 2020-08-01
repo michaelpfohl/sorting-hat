@@ -7,7 +7,7 @@ A simple application to randomly assign students to a Hogwarts House.
 ## Features
 
 - Initial link generates a form where the user can input a student's name. 
-- Form must be filled out before it can be submitted. 
+- Form must be filled out before it can be submitted else the border around the input box will turn red and no card will be created.
 - Submitting the form generates a card with the student's name and house info. 
 - Each card is color coded according to the house that the student was randomly assigned.
 - Each card also has an expel button that will delete the student's card. 
