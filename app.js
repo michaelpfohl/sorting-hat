@@ -1,5 +1,7 @@
 'use strict';
 
+let studentNames = [];
+
 const initialButtonClick = () => {
     document.querySelector('#initial-button').addEventListener('click', buildForm);
 }
@@ -15,7 +17,7 @@ const buildForm = () => {
                         <div class="form-row align-items-center">
                             <div class="col-auto">
                                 <label class="sr-only" for="inlineFormInput">Name</label>
-                                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Student Name" required>
+                                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Student Name">
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary mb-2" id="sort-button">Sort!</button>
@@ -35,8 +37,6 @@ const sortButtonClick = () => {
 const expelButtonClick = () => {
     document.querySelector('#cards').addEventListener('click', expelStudent);
 }
-
-let studentNames = [];
 
 const getName = () => {
     const name = document.querySelector('#inlineFormInput').value;
@@ -61,6 +61,9 @@ const buildCard = () => {
                             <button id="${i}" type="button" class="btn btn-danger">Expel</button>
                         </div>
                     </div>`
+            document.querySelector('#inlineFormInput').style.border = 'none';    
+        } else {
+            document.querySelector('#inlineFormInput').style.border = '2px red solid';
         }
     }
     printToDom('#cards', domString);
